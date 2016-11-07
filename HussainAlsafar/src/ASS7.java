@@ -1,0 +1,63 @@
+
+public class ASS7 {
+
+	public ASS7() {
+		// TODO Auto-generated constructor stub
+	}
+
+	 
+
+		public static void main(String[] args) {
+			// TODO Auto-generated method stub
+			
+			// Create the array 
+			int[] deck;
+
+			do {
+				//deck
+				deck = new int[52];
+
+				// Pick four cards
+				pickFourCards(deck);	 
+
+			} while (sum(deck) != 24);
+			
+			// Display the number that yields the sum of 24
+			print(deck);
+		}
+
+		//Randomly picks four cards 
+		public static void pickFourCards(int[] deck) {
+			for (int i = 0; i < 4; i++) {
+				deck[(int)(Math.random() * 52)]++;
+			}
+		}
+
+		//sum computes the sum of cards picked */
+		public static int sum(int[] deck) {
+			int sum = 0;
+			for (int i = 0; i < deck.length; i++) {
+				sum += ((i + 1) % 13) * deck[i]; 
+			}
+			return sum;
+		}
+
+		//displays the picks 
+		public static void print(int[] deck) {
+			String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9",
+				"10", "Jack", "Queen", "King"};
+
+			System.out.print("The number of picks that yields the sum of 24: ");
+			for (int i = 0; i < deck.length; i++) {
+				if (deck[i] > 0)
+					System.out.print(ranks[i % 13] + " ");
+			}
+			System.out.println();
+		}
+
+		}
+
+
+	
+
+
